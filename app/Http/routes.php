@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/test', function () {
     return view('welcome');
 });
 
+Route::group(array('domain' => '{account}.localhost'), function() {
 
-Route::get('/restaurant', 'RestaurantController@index');
+    Route::get('/', function($account) {
+        return $account;
+    });
+
+});
